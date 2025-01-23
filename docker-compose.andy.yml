@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.andy
     ports:
       - "3001:3000"
     depends_on:
@@ -20,7 +20,7 @@ services:
       - mongo-data:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=meteo
-      - MONGO_INITDB_ROOT_PASSWORD=changeit!
+      - MONGO_INITDB_ROOT_PASSWORD=MonsUperPassAvecMaster
       - MONGO_INITDB_DATABASE=meteo
 
 volumes:
