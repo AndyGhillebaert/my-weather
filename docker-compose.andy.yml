@@ -1,4 +1,9 @@
 services:
+
+  networks:
+    app-network:
+      driver: bridge
+
   app:
     container_name: nestjs-app
     restart: unless-stopped
@@ -9,6 +14,8 @@ services:
       - "3001:3000"
     depends_on:
       - mongo
+    networks:
+      - app-network
 
   mongo:
     image: mongo:latest
@@ -22,6 +29,8 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=meteo
       - MONGO_INITDB_ROOT_PASSWORD=MonsUperPassAvecMaster
       - MONGO_INITDB_DATABASE=meteo
+    networks:
+      - app-network
 
 volumes:
   mongo-data:
